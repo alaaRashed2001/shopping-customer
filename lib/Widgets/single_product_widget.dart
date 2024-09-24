@@ -3,6 +3,8 @@ import 'package:online_store_customers/Helpers/dummy_data.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/favorites_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
+import 'package:online_store_customers/Saller/enums_order_status.dart';
+import 'package:online_store_customers/Saller/order_status_provider.dart';
 import 'package:online_store_customers/Screens/details_screen.dart';
 import 'package:online_store_customers/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +37,7 @@ class SingleProductWidget extends StatelessWidget {
 
           final product = allProducts[index];
           final isFavorite = Provider.of<FavoritesProvider>(context).isFavorite(product);
+          final orderStatusProvider = Provider.of<OrderStatusProvider>(context);
 
           return Padding(
             padding: const EdgeInsets.all(4.0),
@@ -126,6 +129,7 @@ class SingleProductWidget extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(16.0),
                                 onTap: () {
                                   cartProvider.add(allProducts[index]);
+                                  orderStatusProvider.updateOrderStatus(OrderStatus.addedToCart);
                                 },
                                 child: const Padding(
                                   padding: EdgeInsets.all(8.0),

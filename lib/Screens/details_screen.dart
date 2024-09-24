@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:online_store_customers/Models/product_model.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
+import 'package:online_store_customers/Saller/enums_order_status.dart';
+import 'package:online_store_customers/Saller/order_status_provider.dart';
 import 'package:online_store_customers/Widgets/my_button.dart';
 import 'package:online_store_customers/Widgets/products_and_price.dart';
 import 'package:online_store_customers/Widgets/rate_stars.dart';
@@ -25,6 +27,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final Color color =
         themeProvider.getDarkTheme ? Colors.white : Colors.black;
+    final orderStatusProvider = Provider.of<OrderStatusProvider>(context);
+
     return Scaffold(
         appBar: AppBar(
           actions: const [ProductsAndPrice()],
@@ -134,6 +138,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   buttonName: "Add To Cart",
                   onPressed: () {
                     cartProvider.add(widget.productModel);
+                    orderStatusProvider.updateOrderStatus(OrderStatus.addedToCart);
                   }),
             ],
           ),

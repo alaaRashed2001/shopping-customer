@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
+import 'package:online_store_customers/Saller/enums_order_status.dart';
+import 'package:online_store_customers/Saller/order_status_provider.dart';
 import 'package:online_store_customers/Widgets/my_button.dart';
 import 'package:online_store_customers/Widgets/payment_methods_bottom_sheet.dart';
 import 'package:online_store_customers/Widgets/text_widget.dart';
@@ -15,6 +17,8 @@ class CheckOutScreen extends StatelessWidget {
     final Color color =
         themeProvider.getDarkTheme ? Colors.white : Colors.black;
     final cartProvider = Provider.of<CartProvider>(context);
+    final orderStatusProvider = Provider.of<OrderStatusProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -75,8 +79,9 @@ class CheckOutScreen extends StatelessWidget {
                   context: context,
                   builder: (context) => const PaymentMethodsBottomSheet(),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16))
+                      borderRadius: BorderRadius.circular(16),),
               );
+              orderStatusProvider.updateOrderStatus(OrderStatus.checkout);
             },
           ),
         ],

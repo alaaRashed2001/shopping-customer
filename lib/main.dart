@@ -6,11 +6,14 @@ import 'package:online_store_customers/Providers/favorites_provider.dart';
 import 'package:online_store_customers/Providers/order_provider.dart';
 import 'package:online_store_customers/Providers/product_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
+import 'package:online_store_customers/Saller/order_status_screen.dart';
 import 'package:online_store_customers/Screens/Auth/login_screen.dart';
 import 'package:online_store_customers/Screens/bottom_bar_screen.dart';
 import 'package:online_store_customers/Screens/splash_screen.dart';
 import 'package:online_store_customers/Shared_Preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
+
+import 'Saller/order_status_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -36,6 +39,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductProvider(),),
         ChangeNotifierProvider(create: (context) => OrdersProvider(),),
         ChangeNotifierProvider(create: (context) => FavoritesProvider(),),
+        /// SALLER
+        ChangeNotifierProvider(create: (context) => OrderStatusProvider(),),
 
       ],
    child: Consumer<ThemeProvider>(
@@ -43,7 +48,7 @@ class MyApp extends StatelessWidget {
        return MaterialApp(
          title: 'Flutter Demo',
          theme: Styles.themeData(isDarkTheme: themeProvider.getTheme(), context: context),
-        home: const SplashScreen(),
+        home: const OrderStatusScreen(),
        );
      }
    ),

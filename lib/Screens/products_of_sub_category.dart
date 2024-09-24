@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:online_store_customers/Models/sub_category_model.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
+import 'package:online_store_customers/Saller/enums_order_status.dart';
+import 'package:online_store_customers/Saller/order_status_provider.dart';
 import 'package:online_store_customers/Screens/details_screen.dart';
 import 'package:online_store_customers/Widgets/products_and_price.dart';
 import 'package:online_store_customers/Widgets/text_widget.dart';
@@ -15,6 +17,8 @@ class ProductsOfSubCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
+    final orderStatusProvider = Provider.of<OrderStatusProvider>(context);
+
     final themeProvider = Provider.of<ThemeProvider>(context);
     final Color color =
     themeProvider.getDarkTheme ? Colors.white : Colors.black;
@@ -58,6 +62,7 @@ class ProductsOfSubCategory extends StatelessWidget {
                         color: color,
                         onPressed: () {
                           cartProvider.add( subcategory.products[index]);
+                          orderStatusProvider.updateOrderStatus(OrderStatus.addedToCart);
                         },
                         icon: const Icon(Icons.add)),
                     leading: Text("\$ ${ subcategory.products[index].price}"),

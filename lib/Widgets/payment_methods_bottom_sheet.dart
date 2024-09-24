@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/order_provider.dart';
+import 'package:online_store_customers/Saller/enums_order_status.dart';
+import 'package:online_store_customers/Saller/order_status_provider.dart';
 import 'package:online_store_customers/Screens/orders_screen.dart';
 import 'package:online_store_customers/Widgets/my_button.dart';
 import 'package:online_store_customers/Widgets/payment_methods_list_view.dart';
@@ -12,6 +14,7 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final ordersProvider = Provider.of<OrdersProvider>(context, listen: false);
+    final orderStatusProvider = Provider.of<OrderStatusProvider>(context);
 
 
     return  Padding(
@@ -28,7 +31,9 @@ class PaymentMethodsBottomSheet extends StatelessWidget {
                 cartProvider.clearCart();
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) =>  const OrdersScreen()));
                 });
-
+              orderStatusProvider.updateOrderStatus(OrderStatus.completed);
+              /// TODO
+              orderStatusProvider.updateOrderStatus(OrderStatus.paymentSuccess);
             }
         ),
         ],
