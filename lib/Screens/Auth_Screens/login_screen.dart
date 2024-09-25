@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Consts/app_color.dart';
+import 'package:online_store_customers/Helpers/snackbar.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
 import 'package:online_store_customers/Screens/App_Screens/bottom_bar_screen.dart';
 import 'package:online_store_customers/Screens/Auth_Screens/forgot_password.dart';
@@ -17,7 +18,7 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with SnackBarHelper {
   late final TextEditingController emailEditingController;
   late final TextEditingController passwordEditingController;
 
@@ -103,8 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     MyButton(
                       buttonName: 'Login',
                       isLoading: false,
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomBarScreen(),));
+                      onPressed: () async{
+                        await performLogin();
+
                       },
                     ),
                     const SizedBox(
@@ -164,4 +166,28 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+  Future<void> performLogin() async {
+    if (checkData()) {
+      await login();
+    }
+  }
+
+  Future<void> login() async {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const BottomBarScreen(),));
+  }
+
+
+  bool checkData() {
+    if (emailEditingController.text.isEmpty) {
+      showSnackBar(context,
+          message: 'The email address must be not empty.', error: true);
+      return false;
+    } else if (passwordEditingController.text.isEmpty) {
+      showSnackBar(context,
+          message: 'The password must be not empty.', error: true);
+      return false;
+    }
+    return true;
+  }
+
 }

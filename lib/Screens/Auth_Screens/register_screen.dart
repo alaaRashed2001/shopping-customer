@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_store_customers/Helpers/snackbar.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
 import 'package:online_store_customers/Screens/Auth_Screens/login_screen.dart';
 import 'package:online_store_customers/Widgets/socialmedia_login_button.dart';
@@ -14,7 +15,7 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterScreenState extends State<RegisterScreen> with SnackBarHelper {
   late final TextEditingController emailEditingController;
   late final TextEditingController passwordEditingController;
   late final TextEditingController mobileEditingController;
@@ -144,7 +145,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             MyButton(
                               buttonName: 'Sign Up',
                               isLoading: false,
-                              onPressed: () {},
+                              onPressed: () async{
+                              await  performRegister();
+                              },
                             ),
                             const SizedBox(
                               height: 20,
@@ -201,6 +204,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ],
       ),
     );
+  }
+
+
+  Future<void> performRegister() async {
+    if (checkData()) {
+      await register();
+    }
+  }
+
+  Future<void> register() async {}
+
+
+
+  bool checkData() {
+    if (usernameEditingController.text.isEmpty) {
+      showSnackBar(context,
+          message: 'The username must be not empty.', error: true);
+      return false;
+    } else if (mobileEditingController.text.isEmpty) {
+      showSnackBar(context,
+          message: 'The mobile phone must be not empty.', error: true);
+      return false;
+    } else if (emailEditingController.text.isEmpty) {
+      showSnackBar(context,
+          message: 'The email address must be not empty.', error: true);
+      return false;
+    } else if (passwordEditingController.text.isEmpty) {
+      showSnackBar(context,
+          message: 'The password must be not empty.', error: true);
+      return false;
+    }
+
+    return true;
   }
 
 }
