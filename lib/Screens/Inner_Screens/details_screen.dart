@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_store_customers/Consts/app_color.dart';
 import 'package:online_store_customers/Models/product_model.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
@@ -33,20 +34,20 @@ class _DetailsScreenState extends State<DetailsScreen> {
         appBar: AppBar(
           actions: const [ProductsAndPrice()],
           leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: color,
-              ),),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: color,
+            ),
+          ),
           elevation: 0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           title: TextWidget(
             text: widget.productModel.title ?? "Not Defined",
             color: color,
-            textSize: 24
-            ,
+            textSize: 24,
             isTitle: true,
             maxLines: 1,
           ),
@@ -87,18 +88,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Icons.edit_location,
-                        size: 26,
-                        color: color,
-                      ),
-                      const SizedBox(
-                        width: 3,
-                      ),
                       TextWidget(
                           text: widget.productModel.location ?? "",
                           color: color,
                           textSize: 16),
+                      const SizedBox(
+                        width: 3,
+                      ),
+
+                          InkWell(
+                            onTap: (){
+                              ///
+                            },
+                            child: Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color:  Colors.green[100],
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child:
+                                TextWidget(text: "+Follow", color: color, textSize: 15)),
+
+                          ),
+
                     ],
                   )
                 ],
@@ -139,7 +151,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   buttonName: "Add To Cart",
                   onPressed: () {
                     cartProvider.add(widget.productModel);
-                    orderStatusProvider.updateOrderStatus(OrderStatus.addedToCart);
+                    orderStatusProvider
+                        .updateOrderStatus(OrderStatus.addedToCart);
                   }),
             ],
           ),

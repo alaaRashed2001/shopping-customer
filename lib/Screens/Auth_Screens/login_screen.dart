@@ -42,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> with SnackBarHelper {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final Color color =
         themeProvider.getDarkTheme ? Colors.white : Colors.black;
+  ///  final googleSignInProvider = Provider.of<GoogleSignInProvider>(context);
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -124,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> with SnackBarHelper {
                         Expanded(
                             child: SocialMediaLoginButton(
                           onPressed: () {
-                            ///
+                       /// googleSignInProvider.googlelogin();
                           },
                           title: "with google",
                           image: 'assets/images/google.png',

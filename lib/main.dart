@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:online_store_customers/Consts/theme_data.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/favorites_provider.dart';
+import 'package:online_store_customers/Providers/google_signIn_provider.dart';
 import 'package:online_store_customers/Providers/order_provider.dart';
 import 'package:online_store_customers/Providers/product_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
@@ -14,7 +15,7 @@ import 'package:provider/provider.dart';
 import 'Saller/order_status_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  /// await Firebase.initializeApp();
  await SharedPreferencesController().initSharedPreferences();
 
   SystemChrome.setPreferredOrientations([
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => FavoritesProvider(),),
         /// SALLER
         ChangeNotifierProvider(create: (context) => OrderStatusProvider(),),
+        /// GoogleSignInProvider
+       ///  ChangeNotifierProvider(create: (context) => GoogleSignInProvider(),),
 
       ],
    child: Consumer<ThemeProvider>(

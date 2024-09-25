@@ -158,27 +158,27 @@ class _RegisterScreenState extends State<RegisterScreen> with SnackBarHelper {
                               textSize: 24,
                               isTitle: true,
                             ),
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Expanded(
-                                    child: SocialMediaLoginButton(
-                                      onPressed: () {
-                                        ///
-                                      },
-                                      title: "with google",
-                                      image: 'assets/images/google.png',
-                                    )),
-                                Expanded(
-                                    child: SocialMediaLoginButton(
-                                      onPressed: () {
-                                        ///
-                                      },
-                                      title: "with facebook",
-                                      image: 'assets/images/facebook.png',
-                                    )),
-                              ],
-                            ),
+                            // Row(
+                            //   // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            //   children: [
+                            //     Expanded(
+                            //         child: SocialMediaLoginButton(
+                            //           onPressed: () {
+                            //             ///
+                            //           },
+                            //           title: "with google",
+                            //           image: 'assets/images/google.png',
+                            //         )),
+                            //     Expanded(
+                            //         child: SocialMediaLoginButton(
+                            //           onPressed: () {
+                            //             ///
+                            //           },
+                            //           title: "with facebook",
+                            //           image: 'assets/images/facebook.png',
+                            //         )),
+                            //   ],
+                            // ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
