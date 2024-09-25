@@ -5,7 +5,7 @@ import 'package:online_store_customers/Providers/favorites_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
 import 'package:online_store_customers/Saller/enums_order_status.dart';
 import 'package:online_store_customers/Saller/order_status_provider.dart';
-import 'package:online_store_customers/Screens/details_screen.dart';
+import 'package:online_store_customers/Screens/Inner_Screens/details_screen.dart';
 import 'package:online_store_customers/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 

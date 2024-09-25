@@ -7,9 +7,7 @@ import 'package:online_store_customers/Providers/order_provider.dart';
 import 'package:online_store_customers/Providers/product_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
 import 'package:online_store_customers/Saller/order_status_screen.dart';
-import 'package:online_store_customers/Screens/Auth/login_screen.dart';
-import 'package:online_store_customers/Screens/bottom_bar_screen.dart';
-import 'package:online_store_customers/Screens/splash_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/splash_screen.dart';
 import 'package:online_store_customers/Shared_Preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ThemeProvider(),),
         ChangeNotifierProvider(create: (context) => CartProvider(),),
         ChangeNotifierProvider(create: (context) => ProductProvider(),),
-        ChangeNotifierProvider(create: (context) => OrdersProvider(),),
+        ChangeNotifierProvider(create: (context) => OrderProvider(),),
         ChangeNotifierProvider(create: (context) => FavoritesProvider(),),
         /// SALLER
         ChangeNotifierProvider(create: (context) => OrderStatusProvider(),),
@@ -48,7 +46,7 @@ class MyApp extends StatelessWidget {
        return MaterialApp(
          title: 'Flutter Demo',
          theme: Styles.themeData(isDarkTheme: themeProvider.getTheme(), context: context),
-        home: const OrderStatusScreen(),
+        home: const SplashScreen(),
        );
      }
    ),

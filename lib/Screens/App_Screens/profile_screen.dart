@@ -2,13 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Helpers/warning_dialog.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
-import 'package:online_store_customers/Screens/Auth/forgot_password.dart';
-import 'package:online_store_customers/Screens/wishlist_screen.dart';
+import 'package:online_store_customers/Screens/Auth_Screens/forgot_password.dart';
+import 'package:online_store_customers/Screens/Inner_Screens/wishlist_screen.dart';
 import 'package:online_store_customers/Widgets/list_tile_widget.dart';
 import 'package:online_store_customers/Widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
-import 'orders_screen.dart';
+import '../Inner_Screens/orders_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

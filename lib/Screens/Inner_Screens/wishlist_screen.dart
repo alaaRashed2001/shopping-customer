@@ -3,7 +3,7 @@ import 'package:online_store_customers/Helpers/warning_dialog.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/favorites_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
-import 'package:online_store_customers/Screens/details_screen.dart';
+import 'package:online_store_customers/Screens/Inner_Screens/details_screen.dart';
 import 'package:online_store_customers/Widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +32,7 @@ class _WishlistScreenState extends State<WishlistScreen>
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: const Icon(Icons.arrow_back_ios)),
+                icon: Icon(Icons.arrow_back_ios, color: color,)),
             automaticallyImplyLeading: false,
             elevation: 0,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,

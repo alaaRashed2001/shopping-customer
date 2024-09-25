@@ -4,7 +4,7 @@ import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
 import 'package:online_store_customers/Saller/enums_order_status.dart';
 import 'package:online_store_customers/Saller/order_status_provider.dart';
-import 'package:online_store_customers/Screens/details_screen.dart';
+import 'package:online_store_customers/Screens/Inner_Screens/details_screen.dart';
 import 'package:online_store_customers/Widgets/products_and_price.dart';
 import 'package:online_store_customers/Widgets/text_widget.dart';
 import 'package:provider/provider.dart';
@@ -26,11 +26,16 @@ class ProductsOfSubCategory extends StatelessWidget {
       appBar: AppBar(
         actions: const [ProductsAndPrice()],
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios), color: color,),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: TextWidget(
           text: 'Products for ${subcategory.name}',
           color: color,
-          textSize: 16,
+          textSize: 24,
           isTitle: true,
         ),
       ),

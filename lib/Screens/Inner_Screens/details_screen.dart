@@ -45,7 +45,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           title: TextWidget(
             text: widget.productModel.title ?? "Not Defined",
             color: color,
-            textSize: 16,
+            textSize: 24
+            ,
             isTitle: true,
             maxLines: 1,
           ),

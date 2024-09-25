@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
+import 'package:online_store_customers/Providers/order_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
 import 'package:online_store_customers/Saller/enums_order_status.dart';
 import 'package:online_store_customers/Saller/order_status_provider.dart';
@@ -8,8 +9,8 @@ import 'package:online_store_customers/Widgets/payment_methods_bottom_sheet.dart
 import 'package:online_store_customers/Widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
-class CheckOutScreen extends StatelessWidget {
-  const CheckOutScreen({Key? key}) : super(key: key);
+class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class CheckOutScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: TextWidget(
-          text: "checkout screen",
+          text: "Cart screen",
           color: color,
           textSize: 24,
           isTitle: true,
@@ -71,6 +72,14 @@ class CheckOutScreen extends StatelessWidget {
                   }),
             ),
           ),
+          //        ElevatedButton(
+          //   onPressed: () {
+          //     Provider.of<OrderProvider>(context, listen: false).addOrder(cartProvider.cartItems, cartProvider.totalAmount);
+          //     cartProvider.clearCart();
+          //     Navigator.pushNamed(context, '/orders');
+          //   },
+          //   child: Text('Complete Payment'),
+          // ),
           MyButton(
             buttonName: 'Pay \$${cartProvider.price}',
             isLoading: false,
@@ -81,7 +90,7 @@ class CheckOutScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),),
               );
-              orderStatusProvider.updateOrderStatus(OrderStatus.checkout);
+           ///   orderStatusProvider.updateOrderStatus(OrderStatus.checkout);
             },
           ),
         ],
@@ -89,3 +98,38 @@ class CheckOutScreen extends StatelessWidget {
     );
   }
 }
+
+// class CartScreen extends StatelessWidget {
+//   const CartScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final cart = Provider.of<CartProvider>(context);
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Your Cart')),
+//       body: Column(
+//         children: [
+//           Expanded(
+//             child: ListView.builder(
+//               itemCount: cart.cartItems.length,
+//               itemBuilder: (ctx, i) => ListTile(
+//                 title: Text(cart.cartItems[i].product.title ?? ""),
+//                 subtitle: Text('Quantity: ${cart.cartItems[i].quantity}'),
+//                 trailing: Text('\$${cart.cartItems[i].product.price}'),
+//               ),
+//             ),
+//           ),
+//           Text('Total: \$${cart.totalAmount}'),
+//           ElevatedButton(
+//             onPressed: () {
+//               Provider.of<OrderProvider>(context, listen: false).addOrder(cart.cartItems, cart.totalAmount);
+//               cart.clearCart();
+//               Navigator.pushNamed(context, '/orders');
+//             },
+//             child: Text('Complete Payment'),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

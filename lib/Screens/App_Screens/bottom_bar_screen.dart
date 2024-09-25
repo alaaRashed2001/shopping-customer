@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:online_store_customers/Screens/categories_screen.dart';
-import 'package:online_store_customers/Screens/home_screen.dart';
-import 'package:online_store_customers/Screens/notification_screen.dart';
-import 'package:online_store_customers/Screens/profile_screen.dart';
-import 'package:online_store_customers/Screens/search_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/categories_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/home_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/notification_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/profile_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/search_screen.dart';
 
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({super.key});

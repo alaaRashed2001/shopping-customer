@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
-import 'package:online_store_customers/Screens/Auth/login_screen.dart';
+import 'package:online_store_customers/Screens/Auth_Screens/login_screen.dart';
 import 'package:online_store_customers/Widgets/socialmedia_login_button.dart';
 import 'package:online_store_customers/Widgets/my_button.dart';
 import 'package:online_store_customers/Widgets/text_field.dart';

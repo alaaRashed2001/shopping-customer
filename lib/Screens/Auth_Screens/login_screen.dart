@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Consts/app_color.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
-import 'package:online_store_customers/Screens/Auth/forgot_password.dart';
-import 'package:online_store_customers/Screens/Auth/register_screen.dart';
-import 'package:online_store_customers/Screens/bottom_bar_screen.dart';
+import 'package:online_store_customers/Screens/App_Screens/bottom_bar_screen.dart';
+import 'package:online_store_customers/Screens/Auth_Screens/forgot_password.dart';
+import 'package:online_store_customers/Screens/Auth_Screens/register_screen.dart';
 import 'package:online_store_customers/Widgets/socialmedia_login_button.dart';
 import 'package:online_store_customers/Widgets/my_button.dart';
 import 'package:online_store_customers/Widgets/text_field.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Providers/cart_provider.dart';
 import 'package:online_store_customers/Providers/theme_provider.dart';
-import 'package:online_store_customers/Screens/checkout_screen.dart';
+import 'package:online_store_customers/Screens/Inner_Screens/cart_screen.dart';
 import 'package:online_store_customers/Widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +35,7 @@ class ProductsAndPrice extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const CheckOutScreen(),
+                    builder: (context) => const CartScreen(),
                   ),
                 );
               },

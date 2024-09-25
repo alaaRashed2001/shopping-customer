@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_store_customers/Models/category_model.dart';
-import 'package:online_store_customers/Screens/products_of_sub_category.dart';
+import 'package:online_store_customers/Providers/theme_provider.dart';
+import 'package:online_store_customers/Screens/Inner_Screens/products_of_sub_category.dart';
+import 'package:provider/provider.dart';
 
 class SubcategoriesSheet extends StatelessWidget {
   final CategoryModel category;
@@ -9,6 +11,9 @@ class SubcategoriesSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final Color color =
+    themeProvider.getDarkTheme ? Colors.white : Colors.black;
     return ListView.builder(
       itemCount: category.subcategories.length,
       itemBuilder: (context, index) {
@@ -17,8 +22,8 @@ class SubcategoriesSheet extends StatelessWidget {
 
           title: Text(
             subcategory.name,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: color,
               fontSize: 24,
               fontWeight: FontWeight.bold
             ),
